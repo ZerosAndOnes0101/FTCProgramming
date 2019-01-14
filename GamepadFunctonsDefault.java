@@ -20,6 +20,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
     private Servo boxJoint;
     private Servo sweeper;
     boolean toggleready = false;
+    double motorPower = 0.0;
 
     @Override
     public void runOpMode() {
@@ -52,6 +53,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.update();
+
             double motorPower = gamepad1.left_stick_y;
 
 
@@ -65,12 +67,11 @@ public class GamepadFunctonsDefault extends LinearOpMode {
             if (gamepad1.a && toggleready) {
 
                 toggleready = false;
-                if(motorPower == 1.0){
+                if (motorPower == 1.0) {
                     motorPower = .5;
                 }
 
-            }
-            else if (motorPower == .5) {
+            } else if (motorPower == .5) {
                 motorPower = 1.0;
             }
             if (gamepad1.left_bumper) {
@@ -94,7 +95,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
 
             if (gamepad2.right_bumper) {
-               armJoint.setPower(0);
+                armJoint.setPower(0);
             } else {
                 armJoint.setPower(1);
             }
@@ -102,54 +103,49 @@ public class GamepadFunctonsDefault extends LinearOpMode {
             if (gamepad1.x) {
                 sweeper.setPosition(1);
 
-            } else {
-                sweeper.setPosition(0);
-
             }
-            if (gamepad1.y) {
-                sweeper.setPosition(0);
 
-            } else {
-                sweeper.setPosition(1);
+        }
+        if (gamepad1.y) {
+            sweeper.setPosition(0);
 
-                if (gamepad1.a) {
-                    boxJoint.setPosition(1);
-                } else {
-                    boxJoint.setPosition(0);
-                }
+        }
 
-                if (gamepad1.b) {
-                    armJoint.setPower(0);
-                } else {
-                    armJoint.setPower(1);
-                }
+        if (gamepad1.a) {
+            boxJoint.setPosition(1);
+        }
 
-                if (gamepad1.dpad_up) {
-                    leftBackDrive.setPower(motorPower);
-                    rightDrive.setPower(-motorPower);
 
-                } else if (gamepad1.dpad_right) {
+        if (gamepad1.b) {
+            armJoint.setPower(0);
+        }
 
-                    rightBackDrive.setPower(-motorPower);
-                    leftDrive.setPower(motorPower);
 
-                } else if (gamepad1.dpad_down) {
-                    leftBackDrive.setPower(-motorPower);
-                    rightDrive.setPower(motorPower);
+        if (gamepad1.dpad_up) {
 
-                } else if (gamepad1.dpad_left) {
+            leftBackDrive.setPower(motorPower);
+            rightDrive.setPower(-motorPower);
 
-                    rightBackDrive.setPower(motorPower);
-                    leftDrive.setPower(-motorPower);
+        } else if (gamepad1.dpad_right) {
 
-                } else {
-                    leftBackDrive.setPower(-motorPower);
-                    rightBackDrive.setPower(motorPower);
-                    leftDrive.setPower(-motorPower);
-                    rightDrive.setPower(motorPower);
+            rightBackDrive.setPower(-motorPower);
+            leftDrive.setPower(motorPower);
 
-                }
-            }
+        } else if (gamepad1.dpad_down) {
+            leftBackDrive.setPower(-motorPower);
+            rightDrive.setPower(motorPower);
+
+        } else if (gamepad1.dpad_left) {
+
+            rightBackDrive.setPower(motorPower);
+            leftDrive.setPower(-motorPower);
+
+        } else {
+            leftBackDrive.setPower(-motorPower);
+            rightBackDrive.setPower(motorPower);
+            leftDrive.setPower(-motorPower);
+            rightDrive.setPower(motorPower);
+
         }
     }
 }
