@@ -99,26 +99,26 @@ public class GamepadFunctonsDefault extends LinearOpMode {
                 armJoint.setPower(1);
             }
 
-            if (gamepad2.x) {
+            if (gamepad1.x) {
                 sweeper.setPosition(1);
 
             } else {
                 sweeper.setPosition(0);
 
             }
-            if (gamepad2.y) {
+            if (gamepad1.y) {
                 sweeper.setPosition(0);
 
             } else {
                 sweeper.setPosition(1);
 
-                if (gamepad2.a) {
+                if (gamepad1.a) {
                     boxJoint.setPosition(1);
                 } else {
                     boxJoint.setPosition(0);
                 }
 
-                if (gamepad2.b) {
+                if (gamepad1.b) {
                     armJoint.setPower(0);
                 } else {
                     armJoint.setPower(1);
