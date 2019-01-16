@@ -185,11 +185,11 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
 
         if (gamepad2.a) {
-            boxJoint.setPosition(1);
+            boxJoint.setPower(1);
         }
 
         else {
-            boxJoint.setPosition(0);
+            boxJoint.setPower(0);
         }
 
 
