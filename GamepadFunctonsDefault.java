@@ -138,13 +138,13 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
 
 
-            if (gamepad1.left_bumper) {
+            if (gamepad1.right_bumper) {
                 leftDrive.setPower(-gamepad1.left_stick_y);
                 leftBackDrive.setPower(-gamepad1.left_stick_y);
                 rightDrive.setPower(-gamepad1.left_stick_y);
                 rightBackDrive.setPower(-gamepad1.left_stick_y);
             }
-            if (gamepad1.right_bumper) {
+            if (gamepad1.left_bumper) {
                 leftDrive.setPower(gamepad1.left_stick_y);
                 leftBackDrive.setPower(gamepad1.left_stick_y);
                 rightDrive.setPower(gamepad1.left_stick_y);
