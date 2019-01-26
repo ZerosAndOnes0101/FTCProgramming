@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.src.main.java.org.firstinspires.ftc.teamcode.zeroandones;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -21,13 +21,15 @@ public class GamepadFunctonsDefault extends LinearOpMode {
     private CRServo sweeper;
     private CRServo armExtend;
     private boolean isAOn = false;
+    private boolean is2AOn = false;
     private double slowModeValue = 1.0;
-    private double leftPower;
-    private double rightPower;
-    private double rightBackPower;
-    private double leftBackPower;
-    private double armJointPower;
-    private double latchPower;
+    private double reverseModeValue = 1.0;
+    //private double leftPower;
+    //private double rightPower;
+    //private double rightBackPower;
+    //private double leftBackPower;
+    //private double armJointPower;
+    //private double latchPower;
 
     @Override
     public void runOpMode() {
@@ -65,7 +67,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
             if (gamepad1.a && !isAOn) {
 
-                if (slowModeValue == 1.0) slowModeValue = 2;
+                if (slowModeValue == 1.0) slowModeValue = .5;
                 else slowModeValue = 1.0;
                 isAOn = true;
 
@@ -83,24 +85,24 @@ public class GamepadFunctonsDefault extends LinearOpMode {
             final double rearLeft = -r * Math.sin(robotAngle) + rotate;
             final double rearRight = r * Math.cos(robotAngle) + rotate;
 
-            if(gamepad1.left_stick_x != 0 || gamepad1.left_stick_y != 0 || gamepad1.right_stick_x != 0) {
+            if (gamepad1.left_stick_x != 0 || gamepad1.left_stick_y != 0 || gamepad1.right_stick_x != 0) {
                 if (gamepad1.left_stick_x > 0.1 || gamepad1.left_stick_x < 0.1) {
                     //Motor Power Sets
 
-                    telemetry.addData("Inside-1",  "Running at %2f :%2f :%2f :%2f",
+                    telemetry.addData("Inside-1", "Running at %2f :%2f :%2f :%2f",
                             frontLeft,
                             frontRight,
                             rearLeft,
                             rearRight);
 
-                    leftDrive.setPower(frontLeft);
-                    rightDrive.setPower(frontRight);
-                    leftBackDrive.setPower(rearLeft);
-                    rightBackDrive.setPower(rearRight);
+                    leftDrive.setPower(frontLeft * slowModeValue);
+                    rightDrive.setPower(frontRight * slowModeValue);
+                    leftBackDrive.setPower(rearLeft * slowModeValue);
+                    rightBackDrive.setPower(rearRight * slowModeValue);
                 } else {
                     //Motor Power Sets
 
-                    telemetry.addData("Inside-2",  "Running at %2f :%2f :%2f :%2f",
+                    telemetry.addData("Inside-2", "Running at %2f :%2f :%2f :%2f",
                             frontLeft,
                             frontRight,
                             rearLeft,
@@ -111,9 +113,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
                     leftBackDrive.setPower(rearLeft / slowModeValue);
                     rightBackDrive.setPower(rearRight / slowModeValue);
                 }
-            }
-            else
-            {
+            } else {
                 leftDrive.setPower(0.005);
                 rightDrive.setPower(0.005);
                 leftBackDrive.setPower(0.005);
@@ -121,56 +121,66 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
                 double def_frontLeft = 0.005;
 
-                telemetry.addData("Inside-3",  "Running at %2f :%2f :%2f :%2f",
+                telemetry.addData("Inside-3", "Running at %2f :%2f :%2f :%2f",
                         def_frontLeft,
                         def_frontLeft,
                         def_frontLeft,
                         def_frontLeft);
 
             }
-            armJoint.setPower(gamepad2.right_stick_y * .5);
-            latch.setPower(gamepad2.left_stick_y);
 
+            if (gamepad2.a && !is2AOn) {
 
-            if (gamepad2.x) {
+                if (reverseModeValue == 1.0) reverseModeValue = -1.0;
+                else reverseModeValue = 1.0;
+                is2AOn = true;
 
-                armExtend.setPower(1);
-            } else {
-                armExtend.setPower(0);
-            }
-            if (gamepad2.y) {
-
-                armExtend.setPower(-1);
-            } else {
-                armExtend.setPower(0);
+            } else if (!gamepad2.a) {
+                is2AOn = false;
             }
 
 
-        }
-        if (gamepad2.left_bumper) {
-            sweeper.setPower(1);
-        } else {
-            sweeper.setPower(0);
-        }
-        if (gamepad2.right_bumper) {
-            sweeper.setPower(-1);
-        } else {
-            sweeper.setPower(0);
+
+            armJoint.setPower(gamepad2.right_stick_y * .75);
+            sweeper.setPower(gamepad2.left_stick_y);
+            armExtend.setPower(gamepad2.right_trigger * reverseModeValue);
+           boxJoint.setPower(gamepad2.left_trigger * reverseModeValue);
+
+
+            //not Working, Why?? edit: Might work
+            if (gamepad2.left_bumper) {
+                latch.setPower(-1.0);
+            } else {
+                latch.setPower(0);
+            }
+
+
+
+            if (gamepad2.right_bumper) {
+                latch.setPower(1.0);
+            } else {
+                latch.setPower(0);
+            }
+
+
+
+
+
         }
 
 
-        if (gamepad2.a) {
-            boxJoint.setPower(-1);
-        } else {
-            boxJoint.setPower(0);
-        }
-
-        if (gamepad2.b) {
+        /*if (gamepad2.x) {
             boxJoint.setPower(1);
         } else {
             boxJoint.setPower(0);
         }
 
+        if (gamepad2.y) {
+            boxJoint.setPower(-1);
+        } else {
+            boxJoint.setPower(0);
+        }
 
+*/
     }
 }
