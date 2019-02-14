@@ -21,15 +21,13 @@ public class GamepadFunctonsDefault extends LinearOpMode {
     private CRServo sweeper;
     private CRServo armExtend;
     private boolean isAOn = false;
-    private boolean is2AOn = false;
     private double slowModeValue = 1.0;
-    private double reverseModeValue = 1.0;
-    //private double leftPower;
-    //private double rightPower;
-    //private double rightBackPower;
-    //private double leftBackPower;
-    //private double armJointPower;
-    //private double latchPower;
+    private double leftPower;
+    private double rightPower;
+    private double rightBackPower;
+    private double leftBackPower;
+    private double armJointPower;
+    private double latchPower;
 
     @Override
     public void runOpMode() {
@@ -67,7 +65,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
             if (gamepad1.a && !isAOn) {
 
-                if (slowModeValue == 1.0) slowModeValue = .5;
+                if (slowModeValue == 1.0) slowModeValue = 2;
                 else slowModeValue = 1.0;
                 isAOn = true;
 
@@ -88,26 +86,12 @@ public class GamepadFunctonsDefault extends LinearOpMode {
             if (gamepad1.left_stick_x != 0 || gamepad1.left_stick_y != 0 || gamepad1.right_stick_x != 0) {
                 if (gamepad1.left_stick_x > 0.1 || gamepad1.left_stick_x < 0.1) {
                     //Motor Power Sets
-
-                    telemetry.addData("Inside-1", "Running at %2f :%2f :%2f :%2f",
-                            frontLeft,
-                            frontRight,
-                            rearLeft,
-                            rearRight);
-
-                    leftDrive.setPower(frontLeft * slowModeValue);
-                    rightDrive.setPower(frontRight * slowModeValue);
-                    leftBackDrive.setPower(rearLeft * slowModeValue);
-                    rightBackDrive.setPower(rearRight * slowModeValue);
+                    leftDrive.setPower(frontLeft);
+                    rightDrive.setPower(frontRight);
+                    leftBackDrive.setPower(rearLeft);
+                    rightBackDrive.setPower(rearRight);
                 } else {
                     //Motor Power Sets
-
-                    telemetry.addData("Inside-2", "Running at %2f :%2f :%2f :%2f",
-                            frontLeft,
-                            frontRight,
-                            rearLeft,
-                            rearRight);
-
                     leftDrive.setPower(frontLeft / slowModeValue);
                     rightDrive.setPower(frontRight / slowModeValue);
                     leftBackDrive.setPower(rearLeft / slowModeValue);
@@ -119,47 +103,28 @@ public class GamepadFunctonsDefault extends LinearOpMode {
                 leftBackDrive.setPower(0.005);
                 rightBackDrive.setPower(0.005);
 
-                double def_frontLeft = 0.005;
-
-                telemetry.addData("Inside-3", "Running at %2f :%2f :%2f :%2f",
-                        def_frontLeft,
-                        def_frontLeft,
-                        def_frontLeft,
-                        def_frontLeft);
-
             }
 
-            if (gamepad2.a && !is2AOn) {
-
-                if (reverseModeValue == 1.0) reverseModeValue = -1.0;
-                else reverseModeValue = 1.0;
-                is2AOn = true;
-
-            } else if (!gamepad2.a) {
-                is2AOn = false;
-            }
-
-
-
-            armJoint.setPower(gamepad2.right_stick_y * .75);
+            armJoint.setPower(gamepad2.right_stick_y * .5);
+            boxJoint.setPower(gamepad2.left_stick_y);
             sweeper.setPower(gamepad2.left_stick_y);
-            armExtend.setPower(gamepad2.right_trigger * reverseModeValue);
-           boxJoint.setPower(gamepad2.left_trigger * reverseModeValue);
 
-
-            //not Working, Why?? edit: Might work
             if (gamepad2.left_bumper) {
-                latch.setPower(-1.0);
+                latch.setPower(1);
             } else {
-                latch.setPower(0);
+
+                sweeper.setPower(0);
+
             }
-
-
 
             if (gamepad2.right_bumper) {
-                latch.setPower(1.0);
+
+                latch.setPower(-1);
+
             } else {
-                latch.setPower(0);
+
+                sweeper.setPower(0);
+
             }
 
 
@@ -168,19 +133,7 @@ public class GamepadFunctonsDefault extends LinearOpMode {
 
         }
 
-
-        /*if (gamepad2.x) {
-            boxJoint.setPower(1);
-        } else {
-            boxJoint.setPower(0);
-        }
-
-        if (gamepad2.y) {
-            boxJoint.setPower(-1);
-        } else {
-            boxJoint.setPower(0);
-        }
-
-*/
     }
+
 }
+
