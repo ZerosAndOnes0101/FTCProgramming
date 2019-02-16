@@ -128,7 +128,7 @@ public class AutoStates extends Nav_Routines {
             leftRear.setPower(-.15);
             rightFront.setPower(.15);
             rightRear.setPower(.15);
-            sleep(1050);
+            sleep(1000);
             leftFront.setPower(0);
             leftRear.setPower(0);
             rightFront.setPower(0);
@@ -138,7 +138,7 @@ public class AutoStates extends Nav_Routines {
             leftRear.setPower(-.15);
             rightFront.setPower(-.15);
             rightRear.setPower(.15);
-            sleep(1000);
+            sleep(1200);
             leftFront.setPower(0);
             leftRear.setPower(0);
             rightFront.setPower(0);
@@ -165,13 +165,24 @@ public class AutoStates extends Nav_Routines {
             leftRear.setPower(-0);
             rightFront.setPower(-0);
             rightRear.setPower(0);
+            sleep(100);
+            leftFront.setPower(-.15);
+            leftRear.setPower(-.15);
+            rightFront.setPower(.15);
+            rightRear.setPower(.15);
+            sleep(200);
+            leftFront.setPower(0);
+            leftRear.setPower(0);
+            rightFront.setPower(0);
+            rightRear.setPower(-0);
+            sleep(100);
             goldfound = checktfod();
             if (goldfound) {
                 leftFront.setPower(-.15);
                 leftRear.setPower(-.15);
                 rightFront.setPower(-.15);
                 rightRear.setPower(-.15);
-                sleep(700);
+                sleep(850);
                 leftFront.setPower(0);
                 leftRear.setPower(0);
                 rightFront.setPower(0);
@@ -191,7 +202,7 @@ public class AutoStates extends Nav_Routines {
                 leftRear.setPower(-.15);
                 rightFront.setPower(-.15);
                 rightRear.setPower(.15);
-                sleep(2400);
+                sleep(1800);
                 leftFront.setPower(0);
                 leftRear.setPower(0);
                 rightFront.setPower(0);
@@ -235,31 +246,32 @@ public class AutoStates extends Nav_Routines {
                 rightRear.setPower(0);
                 minKnock.setPower(0);
                 sleep(100);
+                //turn left
                 leftFront.setPower(-.15);
                 leftRear.setPower(-.15);
                 rightFront.setPower(.15);
                 rightRear.setPower(.15);
-                sleep(1200);
+                sleep(800);
                 leftFront.setPower(0);
                 leftRear.setPower(0);
                 rightFront.setPower(0);
                 rightRear.setPower(0);
                 sleep(100);
-                leftFront.setPower(-.15);
-                leftRear.setPower(.15);
-                rightFront.setPower(.15);
-                rightRear.setPower(-.15);
-                sleep(200);
+                leftFront.setPower(.15);
+                leftRear.setPower(-.15);
+                rightFront.setPower(-.15);
+                rightRear.setPower(.15);
+                sleep(450);
                 leftFront.setPower(0);
                 leftRear.setPower(0);
                 rightFront.setPower(0);
                 rightRear.setPower(0);
                 sleep(100);
-                leftFront.setPower(1);
-                leftRear.setPower(1);
-                rightFront.setPower(1);
-                rightRear.setPower(1);
-                sleep(2200);
+                leftFront.setPower(-1);
+                leftRear.setPower(-1);
+                rightFront.setPower(-1);
+                rightRear.setPower(-1);
+                sleep(2600);
                 leftFront.setPower(0);
                 leftRear.setPower(0);
                 rightFront.setPower(0);
@@ -268,22 +280,21 @@ public class AutoStates extends Nav_Routines {
             }
             else{
 
-                leftFront.setPower(.15);
-                leftRear.setPower(.15);
-                rightFront.setPower(-.15);
-                rightRear.setPower(-.15);
-                sleep(550);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                goldfound = checktfod();
-                if (goldfound) {
+                    leftFront.setPower(.15);
+                    leftRear.setPower(.15);
+                    rightFront.setPower(-.15);
+                    rightRear.setPower(-.15);
+                    sleep(450);
+                    leftFront.setPower(0);
+                    leftRear.setPower(0);
+                    rightFront.setPower(0);
+                    rightRear.setPower(0);
+                    sleep(100);
                     leftFront.setPower(-.15);
                     leftRear.setPower(-.15);
                     rightFront.setPower(-.15);
                     rightRear.setPower(-.15);
-                    sleep(800);
+                    sleep(950);
                     leftFront.setPower(0);
                     leftRear.setPower(0);
                     rightFront.setPower(0);
@@ -313,7 +324,7 @@ public class AutoStates extends Nav_Routines {
                     leftRear.setPower(-.15);
                     rightFront.setPower(-.15);
                     rightRear.setPower(.15);
-                    sleep(2000);
+                    sleep(1600);
                     leftFront.setPower(0);
                     leftRear.setPower(0);
                     rightFront.setPower(0);
@@ -323,7 +334,7 @@ public class AutoStates extends Nav_Routines {
                     leftRear.setPower(.15);
                     rightFront.setPower(-.15);
                     rightRear.setPower(-.15);
-                    sleep(200);
+                    sleep(300);
                     leftFront.setPower(0);
                     leftRear.setPower(0);
                     rightFront.setPower(0);
@@ -338,11 +349,12 @@ public class AutoStates extends Nav_Routines {
                     leftRear.setPower(0);
                     rightFront.setPower(0);
                     rightRear.setPower(0);
+                    sleep(100);
                     leftFront.setPower(1);
                     leftRear.setPower(-1);
                     rightFront.setPower(-1);
                     rightRear.setPower(1);
-                    sleep(1200);
+                    sleep(1400);
                     leftFront.setPower(0);
                     leftRear.setPower(0);
                     rightFront.setPower(0);
@@ -356,11 +368,11 @@ public class AutoStates extends Nav_Routines {
                     rightRear.setPower(0);
                     minKnock.setPower(0);
                     sleep(100);
-                    leftFront.setPower(.15);
-                    leftRear.setPower(.15);
-                    rightFront.setPower(-.15);
-                    rightRear.setPower(-.15);
-                    sleep(1200);
+                    leftFront.setPower(-.15);
+                    leftRear.setPower(-.15);
+                    rightFront.setPower(.15);
+                    rightRear.setPower(.15);
+                    sleep(800);
                     leftFront.setPower(0);
                     leftRear.setPower(0);
                     rightFront.setPower(0);
@@ -376,10 +388,10 @@ public class AutoStates extends Nav_Routines {
                     rightFront.setPower(0);
                     rightRear.setPower(0);
                     sleep(100);
-                    leftFront.setPower(1);
-                    leftRear.setPower(1);
-                    rightFront.setPower(1);
-                    rightRear.setPower(1);
+                    leftFront.setPower(-1);
+                    leftRear.setPower(-1);
+                    rightFront.setPower(-1);
+                    rightRear.setPower(-1);
                     sleep(2200);
                     leftFront.setPower(0);
                     leftRear.setPower(0);
@@ -387,7 +399,7 @@ public class AutoStates extends Nav_Routines {
                     rightRear.setPower(0);
                     sleep(100);
 
-                }
+
             }
 
         }
