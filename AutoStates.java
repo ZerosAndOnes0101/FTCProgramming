@@ -9,6 +9,7 @@ public class AutoStates extends Nav_Routines {
     // int leftrightcenter = 1; // 1 = left,  2 = right, 3= center
     double distancetraveledtodepot = 0;
     int leftcenterright = 1;
+    boolean checkObj = false;
 
 
     @Override
@@ -16,390 +17,93 @@ public class AutoStates extends Nav_Routines {
         Nav_Init();
 
         winchhookdown();
-
-        leftFront.setPower(-.15);
-        leftRear.setPower(.15);
-        rightFront.setPower(.15);
-        rightRear.setPower(-.15);
-        sleep(350);
-        leftFront.setPower(0);
-        leftRear.setPower(0);
-        rightFront.setPower(0);
-        rightRear.setPower(0);
-        sleep(100);
-        leftFront.setPower(-.15);
-        leftRear.setPower(-.15);
-        rightFront.setPower(-.15);
-        rightRear.setPower(-.15);
-        sleep(550);
-        leftFront.setPower(0);
-        leftRear.setPower(0);
-        rightFront.setPower(0);
-        rightRear.setPower(0);
-        sleep(100);
-
-        leftFront.setPower(-.15);//go right
-        leftRear.setPower(.15);
-        rightFront.setPower(.15);
-        rightRear.setPower(-.15);
-        sleep(1000);
-        leftFront.setPower(0);
-        leftRear.setPower(0);
-        rightFront.setPower(0);
-        rightRear.setPower(0);
+        strafeRight(.15,350,100);
 
 
-        goldfound = checktfod();
+        forward(.15,550,100);
+
+        strafeRight(.15,900,100);
+
+        checkObj = checkObject();
+        if (checkObj) {
+
+        }
+
         if (goldfound) {
-            leftFront.setPower(-.15);
-            leftRear.setPower(-.15);
-            rightFront.setPower(-.15);
-            rightRear.setPower(-.15);
-            sleep(700);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(.15);
-            leftRear.setPower(.15);
-            rightFront.setPower(.15);
-            rightRear.setPower(.15);
-            sleep(400);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(.15);
-            leftRear.setPower(-.15);
-            rightFront.setPower(-.15);
-            rightRear.setPower(.15);
-            sleep(2650);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(.15);
-            leftRear.setPower(.15);
-            rightFront.setPower(-.15);
-            rightRear.setPower(-.15);
-            sleep(200);
-            leftFront.setPower(-.1);
-            leftRear.setPower(-.1);
-            rightFront.setPower(-.1);
-            rightRear.setPower(-.1);
-            sleep(100);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(.15);
-            leftRear.setPower(.15);
-            rightFront.setPower(-.15);
-            rightRear.setPower(-.15);
-            sleep(550);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(1);
-            leftRear.setPower(-1);
-            rightFront.setPower(-1);
-            rightRear.setPower(1);
-            sleep(1300);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            minKnock.setPower(-1);
-            sleep(1200);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            minKnock.setPower(0);
-            sleep(100);
-            leftFront.setPower(-.15);
-            leftRear.setPower(-.15);
-            rightFront.setPower(.15);
-            rightRear.setPower(.15);
-            sleep(1000);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(.15);
-            leftRear.setPower(-.15);
-            rightFront.setPower(-.15);
-            rightRear.setPower(.15);
-            sleep(1200);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(-1);
-            leftRear.setPower(-1);
-            rightFront.setPower(-1);
-            rightRear.setPower(-1);
-            sleep(2600);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(0);
-            sleep(100);
+            forward(.15,700,100);
+
+           backward(.15,450,100);
+
+            strafeLeft(.5,2800,100);
+
+            turnLeft(.15,800,100);
+
+            forward(.3,400,100);
+
+            strafeLeft(.3,1300,100);
+
+            deposit(1200,100);
+
+            turnRight(.15,1000,100);
+
+            strafeLeft(.3,1000,100);
+
+            forward(.5,2600,100);
+
         } else {
 
-            leftFront.setPower(.15);
-            leftRear.setPower(-.15);
-            rightFront.setPower(-.15);
-            rightRear.setPower(.15);
-            sleep(1100);
-            leftFront.setPower(0);
-            leftRear.setPower(-0);
-            rightFront.setPower(-0);
-            rightRear.setPower(0);
-            sleep(100);
-            leftFront.setPower(-.15);
-            leftRear.setPower(-.15);
-            rightFront.setPower(.15);
-            rightRear.setPower(.15);
-            sleep(200);
-            leftFront.setPower(0);
-            leftRear.setPower(0);
-            rightFront.setPower(0);
-            rightRear.setPower(-0);
-            sleep(100);
+            strafeLeft(.15,1100,100);
+
+            turnRight(.15,300,100);
+
             goldfound = checktfod();
             if (goldfound) {
-                leftFront.setPower(-.15);
-                leftRear.setPower(-.15);
-                rightFront.setPower(-.15);
-                rightRear.setPower(-.15);
-                sleep(850);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(.15);
-                leftRear.setPower(.15);
-                rightFront.setPower(.15);
-                rightRear.setPower(.15);
-                sleep(600);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(.15);
-                leftRear.setPower(-.15);
-                rightFront.setPower(-.15);
-                rightRear.setPower(.15);
-                sleep(1800);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(.15);
-                leftRear.setPower(.15);
-                rightFront.setPower(-.15);
-                rightRear.setPower(-.15);
-                sleep(200);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(.15);
-                leftRear.setPower(.15);
-                rightFront.setPower(-.15);
-                rightRear.setPower(-.15);
-                sleep(500);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(1);
-                leftRear.setPower(-1);
-                rightFront.setPower(-1);
-                rightRear.setPower(1);
-                sleep(1200);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                minKnock.setPower(-1);
-                sleep(1200);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                minKnock.setPower(0);
-                sleep(100);
-                //turn left
-                leftFront.setPower(-.15);
-                leftRear.setPower(-.15);
-                rightFront.setPower(.15);
-                rightRear.setPower(.15);
-                sleep(800);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(.15);
-                leftRear.setPower(-.15);
-                rightFront.setPower(-.15);
-                rightRear.setPower(.15);
-                sleep(450);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
-                leftFront.setPower(-1);
-                leftRear.setPower(-1);
-                rightFront.setPower(-1);
-                rightRear.setPower(-1);
-                sleep(2600);
-                leftFront.setPower(0);
-                leftRear.setPower(0);
-                rightFront.setPower(0);
-                rightRear.setPower(0);
-                sleep(100);
+                forward(.15,750,100);
+
+                backward(.15,600,100);
+
+                strafeLeft(.5,1800,100);
+
+                turnLeft(.3,800,100);
+
+                forward(.15,400,100);
+
+                strafeLeft(.3,1200,100);
+
+                deposit(1200,100);
+
+                turnRight(.15,800,100);
+
+                strafeLeft(.15,1000,100);
+
+                forward(.5,2600,100);
+
             }
             else{
+                    turnLeft(.15,450,100);
 
-                    leftFront.setPower(.15);
-                    leftRear.setPower(.15);
-                    rightFront.setPower(-.15);
-                    rightRear.setPower(-.15);
-                    sleep(450);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(-.15);
-                    leftRear.setPower(-.15);
-                    rightFront.setPower(-.15);
-                    rightRear.setPower(-.15);
-                    sleep(950);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(.15);
-                    leftRear.setPower(.15);
-                    rightFront.setPower(.15);
-                    rightRear.setPower(.15);
-                    sleep(550);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(-.15);
-                    leftRear.setPower(-.15);
-                    rightFront.setPower(.15);
-                    rightRear.setPower(.15);
-                    sleep(600);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(.15);
-                    leftRear.setPower(-.15);
-                    rightFront.setPower(-.15);
-                    rightRear.setPower(.15);
-                    sleep(1600);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(.15);
-                    leftRear.setPower(.15);
-                    rightFront.setPower(-.15);
-                    rightRear.setPower(-.15);
-                    sleep(300);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(.15);
-                    leftRear.setPower(.15);
-                    rightFront.setPower(-.15);
-                    rightRear.setPower(-.15);
-                    sleep(650);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(1);
-                    leftRear.setPower(-1);
-                    rightFront.setPower(-1);
-                    rightRear.setPower(1);
-                    sleep(1400);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    minKnock.setPower(-1);
-                    sleep(1200);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    minKnock.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(-.15);
-                    leftRear.setPower(-.15);
-                    rightFront.setPower(.15);
-                    rightRear.setPower(.15);
-                    sleep(800);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(-.15);
-                    leftRear.setPower(.15);
-                    rightFront.setPower(.15);
-                    rightRear.setPower(-.15);
-                    sleep(200);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
-                    leftFront.setPower(-1);
-                    leftRear.setPower(-1);
-                    rightFront.setPower(-1);
-                    rightRear.setPower(-1);
-                    sleep(2200);
-                    leftFront.setPower(0);
-                    leftRear.setPower(0);
-                    rightFront.setPower(0);
-                    rightRear.setPower(0);
-                    sleep(100);
+                    forward(.15,950,100);
 
+                    backward(.15,550,100);
 
+                    turnRight(.15,600,100);
+
+                    strafeLeft(.15,1600,100);
+
+                    turnLeft(.3,600,100);
+
+                    forward(.15,400,100);
+
+                    strafeLeft(.5,1800,100);
+
+                    deposit(1200,100);
+
+                    turnRight(.15,800,100);
+
+                    strafeLeft(.15,1000,100);
+
+                    forward(.7,2200,100);
+                    
             }
 
         }
